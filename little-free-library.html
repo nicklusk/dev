@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Article" lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M93MRM4');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYYNKLQGX1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZYYNKLQGX1');
+    </script> -->
+
+  <!-- metas -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Making an API call is a lot like skinning a cat, there is more than one way to do it. I am going to try and give examples both plentiful and diverse. I am not sure anyone could make a comprehensive list of methods, which is a testament to the unreasonably large number of front-end technologies that objectively do the same thing.">
+  <meta name="author" content="Nick Lusk">
+  <meta content="follow,index" name="robots">
+
+
+  <meta property="og:title" content="Several Ways JavaScript Can Get Data From An API">
+  <meta property="og:description"
+    content="Making an API call is a lot like skinning a cat, there is more than one way to do it. I am going to try and give examples both plentiful and diverse. I am not sure anyone could make a comprehensive list of methods, which is a testament to the unreasonably large number of front-end technologies that objectively do the same thing.">
+  <meta property="og:image" content="https://nicklusk.com/static/img/OPX/api-article-tz.jpg">
+  <meta property="og:url" content="http://nicklusk.com/javascript-api-return-json-display.html">
+
+  <meta name="twitter:card" content="summary" />
+
+
+
+
+  <!-- title -->
+  <title>Nick Lusk - Building a Little Free Library</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- plugin CSS -->
+  <!-- theme css -->
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+    rel="stylesheet">
+
+  <link href="static/min-prime.css" rel="stylesheet">
+  <link href="static/style/master.css" rel="stylesheet">
+
+</head>
+<!-- Body Start -->
+
+<body data-spy="scroll" data-target="#navbar-collapse-toggle" data-offset="70">
+  <a id="top"></a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M93MRM4" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- page loading -->
+  <div id="loading">
+    <div class="load-circle"><span class="one"></span></div>
+  </div>
+  <!-- end page loading -->
+  <!-- Mobile Toggle -->
+  <div class="mob-header">
+    <div class="d-flex">
+      <div class="navbar-brand">
+        <a class="logo-text" href="index.html">
+          Nick Lusk
+        </a>
+      </div>
+      <button class="toggler-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+  <!-- / -->
+  <header class="header-left" id="navbar-collapse-toggle">
+    <div class="navbar-brand">
+      <a class="logo-text" href="index.html">
+        Nick Lusk
+      </a>
+    </div>
+    <ul class="nav">
+      <p>
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-house-damage"></i>
+          <span>Home</span>
+        </a>
+      </p>
+    </ul>
+  </header>
+  <!-- Main -->
+  <main class="main-left">
+    <section id="home" class="home-banner-01 bg-cover bg-left bg-no-repeat"
+      style="background-image: url(static/img/sub-page-banner.gif);overflow: hidden; ">
+      <div class="container">
+        <div class="row align-items-top">
+          <div class="col-sm align-self-center">
+            <div class="ht-text">
+              <div id="wrapper">
+                <div class="row" style="vertical-align: top;">
+                  <ul class="c-rainbow">
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--white">NICK&nbsp;LUSK</p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--aquamarine">NICK&nbsp;LUSK</p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--brightTurquoise">NICK&nbsp;LUSK
+                      </p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--azureRadiance">NICK&nbsp;LUSK
+                      </p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--royalBlue">NICK&nbsp;LUSK</p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--resolutionBlue">NICK&nbsp;LUSK
+                      </p>
+                    <li class="c-rainbow__layer c-rainbow__layer-font c-rainbow__layer--blueDiamond">NICK&nbsp;LUSK</p>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- about us -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="row sm-m-25px-b m-35px-b">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="dark-color text-uppercase">Building a Little Free Library</h2>
+              <p>Building a little free library can be a fun and zesty enterprise, especially when working with a
+                partner. Here's a guide on how my wife and I built our own little free library:</p>
+              <img src="static/img/little-free-library/1-little-free-library-sm.jpg" class="blog" alt=""
+                style="display: block;" />
+              <h3>Planning</h3>
+              <p>The first
+                step in building a little free library is to plan out the design and location. We started by
+                researching different designs online for about seven years. I'm a terrible carpenter, and that spectre
+                hangs over every complex design. We ended up trying to make it look as much like our house as
+                possible. We also decided on the location of the library, which was in our front yard.
+              </p>
+              <img src="static/img/little-free-library/2-little-free-library-sm.jpg" class="" alt="" />
+              <h3>Gathering materials</h3>
+              <p>Once we had a
+                plan in place, we went to the hardware store to purchase the necessary materials. This included wood
+                for the structure, plexiglass for the door, and hardware such as hinges and screws. No fancy
+                lumberyard wood on this princess.
+              </p>
+              <img src="static/img/little-free-library/3-little-free-library-sm.jpg" class="" alt="" />
+              <h3>Building the library</h3>
+              <p>With the
+                materials gathered, we started building the library. We cut the wood to the appropriate sizes,
+                assembled the structure, and attached the plexiglass door. Then I rebuilt the door from scratch
+                because the first one wasn't straight. We also painted the library to match our house.
+              </p>
+              <img src="static/img/little-free-library/4-little-free-library-sm.jpg" class="" alt="" />
+              <h3>Adding finishing touches</h3>
+              <p>To make the
+                library more appealing and functional, we added a few finishing touches. We installed a little roof to
+                protect the books from rain and added a sign to indicate that it was a free library. We also added
+                some flowers that I then ran over with the lawnmower a couple weeks later.
+              </p>
+
+              <p>We launched our Little Free Library with a grand opening event that was in the form of a Facebook
+                post on the neighborhood page. The response was overwhelmingly positive, with many people commenting
+                on how much they loved the idea and how cute our library looked.
+              </p>
+              <img src="static/img/little-free-library/5-little-free-library-sm.jpg" class="" alt="" />
+              <h3>Stocking the library</h3>
+              <p>Once the
+                library was complete, we stocked it with books. We gathered books from our personal collection and
+                asked friends and family to donate books as well. We also added a few children's books and some
+                magazines to appeal to a wider audience.
+              </p>
+              <img src="static/img/little-free-library/6-little-free-library-sm.jpg" class="" alt="" />
+              <h3>Maintaining the library</h3>
+              <p>To keep the
+                library in good condition, we regularly check it for damage or wear and tear. We also periodically
+                restock the library with new books and remove any that have not been borrowed in a while.
+              </p>
+              <img src="static/img/little-free-library/7-little-free-library-sm.jpg" class="" alt="" />
+              <p>In
+                conclusion, building a little free library is a fun and easy project that you can do with your
+                partner. It provides a great opportunity to give back to your community and promote literacy. So why
+                not give it a try and see how it can enhance your neighborhood!</p>
+
+
+
+              <!--
+                  <hr />
+<p>Building a Little Free Library: A Fun and Rewarding Project
+</p>
+<p>As book lovers, my wife and I have always been passionate about promoting literacy and the joy of reading. I'm aware how precious that sounds. So, when we stumbled upon the concept of Little Free Libraries, we knew we had to build one ourselves. For those who may not be familiar, a Little Free Library is a small, free-standing structure that serves as a mini library, usually stocked with books for people in the community to take for free.
+</p>
+<p>We started our project by doing some research on Little Free Libraries online. We found a wealth of information on the official website, including plans for different types of libraries, as well as tips and advice for building and maintaining them. We also spent some time looking at photos of other Little Free Libraries to get inspiration for our own design.
+</p>
+<p>Once we had a good idea of what we wanted our library to look like, we set to work gathering materials. We opted for a simple, box-like design, made out of reclaimed wood we sourced from a local recycling center. We also bought a weather-resistant sealant to protect the wood from the elements, as we planned to keep the library outside.
+</p>
+<p>Building the library itself was fairly straightforward, as we followed the plans we had found online. We added a sloping roof with shingles for extra protection against rain and snow, and added a plexiglass door to keep the books dry while still allowing people to see what was inside. Finally, we painted the library a bright yellow color, which made it stand out in our neighborhood.
+</p>
+<p>With our Little Free Library built, we now had to stock it with books. We started by going through our own collection and selecting books that we were willing to part with. We also reached out to friends and neighbors to see if they had any books they wanted to donate. Within a few weeks, we had a good selection of books for all ages and interests.
+</p>
+<p>We launched our Little Free Library with a grand opening event that was in the form of a Facebook post on the neighborhood page. The response was overwhelmingly positive, with many people commenting on how much they loved the idea and how cute our library looked.
+</p>
+<p>Since then, our Little Free Library has become a fixture in our neighborhood. We see people browsing through the books almost every day, and we love hearing from neighbors who have found a new favorite book or who have donated books of their own.
+</p>
+<p>Overall, building a Little Free Library was a fun and rewarding project that allowed us to give back to our community in a small but meaningful way. If you're a book lover looking for a way to promote literacy and bring your community together, we highly recommend building a Little Free Library of your own.
+</p>
+
+
+<hr />
+
+
+
+
+<p>Building a Little Free Library with My Wife: A DIY Guide
+</p>
+<p>A Little Free Library is a small box filled with books that anyone can borrow or donate books to. They are usually located in public places like parks, sidewalks, and community centers. The concept behind the Little Free Library is to encourage reading and foster a sense of community.
+</p>
+<p>Here's how we built our Little Free Library:
+</p>
+<p>Step 1: Plan the Library
+</p>
+<p>Before we started building, we had to decide where to put our Little Free Library. We chose a spot in our front yard that was easily visible from the street. Next, we researched different designs and chose one that we liked. We found several free plans online and modified one to suit our needs.
+</p>
+<p>Step 2: Gather Materials
+</p>
+<p>To build our Little Free Library, we needed the following materials:
+<ul>
+    <p>Cedar wood boards</p>
+    <p>Wood glue</p>
+    <p>Screws</p>
+    <p>Waterproof wood stain</p>
+    <p>Plexiglass</p>
+    <p>Door handle</p>
+    <p>Hinges</p>
+</ul>
+<p>We purchased all of our materials from our local hardware store.
+</p>
+<p>Step 3: Build the Library
+</p>
+<p>We started by cutting the wood boards to size and then glued them together to form the box. We reinforced the box with screws to make it sturdy. Next, we stained the wood with a waterproof wood stain to protect it from the elements. We cut a piece of plexiglass to size and attached it to the front of the box with hinges.
+</p>
+<p>We then added a door handle to the door and installed it on the box. We also attached a sign to the top of the box that read "Little Free Library" so that people would know what it was.
+</p>
+<p>Step 4: Fill the Library
+</p>
+<p>We filled the Little Free Library with books that we had already read and loved. We also included a notebook and pen so that people could leave a note about the book they borrowed or share their thoughts on a book they donated.
+</p>
+<p>Step 5: Share the Library with the Community
+</p>
+<p>Finally, we placed our Little Free Library in our front yard and invited our neighbors to use it. We posted about it on social media and received lots of positive feedback. People started stopping by to borrow books, and others began donating books to the library.
+</p>
+<p>Building a Little Free Library with my wife was a fun and rewarding project. We were able to share our love of books with our community and encourage others to read more. If you're thinking about building your own Little Free Library, I highly recommend it. It's a great way to give back to your community and make a positive impact.
+</p>
+
+
+<hr>
+<p>
+As an alcoholic, building a Little Free Library was not an easy task. Every day was a struggle, but I was determined to create something positive for my community and overcome my addiction.
+</p><p>
+At first, I didn't know where to start. My hands shook as I tried to hold the saw, and I felt like I was going to collapse from the withdrawal symptoms. But I knew that building the Little Free Library would be a powerful symbol of my commitment to sobriety and my desire to give back.
+</p><p>
+With the help of my wife and some supportive friends, we began to work on the Little Free Library. I had to take breaks frequently, and sometimes my hands would tremble so badly that I had to stop working altogether. But I kept at it, determined to see the project through.
+</p><p>
+As the Little Free Library began to take shape, I started to feel a sense of pride and accomplishment. It was something tangible, something that I could point to and say, "I did that." And as I worked, I found that my mind began to clear and my focus improved.
+</p><p>
+We decided to make the Little Free Library a bright, cheerful yellow, to symbolize hope and optimism. Inside, we filled it with a diverse selection of books, from classic literature to children's books to popular thrillers, and cocktail recipes.
+</p><p>
+But we didn't stop there. We wanted to make the Little Free Library a symbol of hope for others who struggled with addiction. So we added a small plaque that read, "Books for Recovery: Take a book, leave a note of support."
+</p><p>
+The response was overwhelming. People from all over the community came to visit the Little Free Library, and many of them left notes of encouragement and support for those struggling with addiction. And as the Little Free Library grew in popularity, I felt my own strength and resolve grow as well.
+</p><p>
+Building a Little Free Library as an alcoholic was not easy, but it was worth it. It gave me a sense of purpose, a sense of community, and most importantly, a sense of hope. And as I continue on my journey of recovery, I know that the Little Free Library will always be there, reminding me of the power of perseverance and the importance of giving back.
+</p><p>
+<hr>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end about us -->
+  </main>
+  <!-- main end -->
+  <!-- Footer-->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 m-10px-tb">
+          <div class="nav justify-content-center justify-content-md-start">
+            <a href="https://www.facebook.com/thefearofmusic"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/NickLusk3"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/afearofmusic/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/nicklusk/en"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.pinterest.com/thefearofmusic"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 m-10px-tb text-center text-md-right">
+          <p>© 2021 copyright all right reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- footer End -->
+
+  <!-- end body -->
+  <script src="static/js/cat.js"></script>
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+</body>
+
+</html>

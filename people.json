@@ -1,0 +1,38 @@
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "Raymond Luxury-Yacht",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "Throatwarbler Mangrove",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 3,
+    "title": "Francis Marion Berry",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 4,
+    "title": "Billy Ray Cyprus Hill",
+    "completed": true
+  },
+  {
+    "userId": 1,
+    "id": 5,
+    "title": "Dr. Goochee Nightmare",
+    "completed": true
+  },
+  {
+    "userId": 1,
+    "id": 6,
+    "title": "D.B. Cooper",
+    "completed": true
+  }
+]
