@@ -1,0 +1,33 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# production
+/bookmarks
+/d3
+/data
+/dotfiles-configs
+/junk
+/junk-closet
+/react
+/react-practice
+/sharing
+/static/css-dist
+/static/hosting
+/static/music
+/static/plugin
+/static/resume
+/static/ugly
+/what-does-it-look-like
+
+# misc
+
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
+
+package-lock.json
